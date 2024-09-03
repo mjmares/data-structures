@@ -14,28 +14,16 @@ public class ListUtil
     public static void reverse(LinkedList<String> strings)
     {
         ListIterator<String> firstIterator = strings.listIterator();
-        ListIterator<String> lastIterator = strings.listIterator();
+        ListIterator<String> lastIterator = strings.listIterator(strings.size());
 
-        String currentStr = firstIterator.next(); 
-        String lastStr = "";
+        for(int i = 0; i < strings.size() / 2; i++) {
 
-        // Move last to last
-        while(lastIterator.hasNext()) {
-            lastStr = lastIterator.next();
-        }
-
-        for(int i = 0; i <= (strings.size() - 1) / 2; i++) {
-            
-            int switchIndex = Math.abs(i - strings.size()) - 1;
-            
-            System.out.println(currentStr + " " + lastStr);
+            // Move iterators and swap elements
+            String firstStr = firstIterator.next();
+            String lastStr = lastIterator.previous();
 
             firstIterator.set(lastStr);
-            lastIterator.set(currentStr);
-
-            currentStr = firstIterator.next(); 
-            lastStr = lastIterator.previous();
+            lastIterator.set(firstStr);
         }
-
     }
 }
