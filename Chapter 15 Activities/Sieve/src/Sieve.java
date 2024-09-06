@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 
 /**
@@ -13,12 +14,19 @@ public class Sieve
         int n = in.nextInt();
 
         // Your work goes here
-        . . .
+        ArrayList<Integer> nums = new ArrayList<Integer>(); // Create an ArrayList object
+        nums.add(2);
+        for(int i = 3; i <= n; i++) {
+            if(i % 2 == 0) {
+                continue;
+            }
+            if(i % 3 == 0) {
+                continue;
+            }
+            nums.add(i);
+        }
 
-
-
-
-
+        System.out.println(nums);
 
 
     }
