@@ -1,5 +1,4 @@
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.*;
 
 
 /**
@@ -13,21 +12,23 @@ public class Sieve
         System.out.println("Compute primes up to which integer?");
         int n = in.nextInt();
 
-        // Your work goes here
-        ArrayList<Integer> nums = new ArrayList<Integer>(); // Create an ArrayList object
-        nums.add(2);
-        for(int i = 3; i <= n; i++) {
-            if(i % 2 == 0) {
-                continue;
+        Set<Integer> primes = new HashSet<Integer>();
+        
+        for(int i = 2; i <= n; i++) {
+            boolean isPrime = true;
+            
+            for (int j = 2; j <= Math.sqrt(i); j++) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
             }
-            if(i % 3 == 0) {
-                continue;
+            
+            if (isPrime) {
+                primes.add(i);
             }
-            nums.add(i);
         }
 
-        System.out.println(nums);
-
-
+        System.out.println(primes);
     }
 }
