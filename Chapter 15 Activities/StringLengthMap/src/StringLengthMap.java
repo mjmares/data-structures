@@ -12,23 +12,29 @@ public class StringLengthMap
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        String filename = "src/test1.txt";
+        String filename = "./test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
             // Create your map here
-            
+            Map <String, String> hm = new HashMap<String, String>();
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
                 Integer len = word.length();
 
+                // Read all words from a file and add them to a map whose keys are word lengths
+                // Add whose values are comma-separated strings of words of the same length. 
+                
+                
+                // Then print out those strings, in increasing order by the length of their entries.
+
                 // Update the map here
                 // Modify Worked Example 15.1
-                
-
+                System.out.println(word);
+                System.out.println(len);
 
             }
 
