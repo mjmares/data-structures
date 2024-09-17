@@ -18,22 +18,29 @@ public class StringLengthMap2
         {
 
             // Create your map here
-            
+            Map<Character, Set<String>> firstLetterMap = new TreeMap<>();
 
             while (in.hasNext())
             {
                 String word = clean(in.next());
-                Integer len = word.length();
+                if (!word.isEmpty()) {
+                    char firstLetter = word.charAt(0);
 
-                // Update the map here
-                // Use the Java 8 merge() method
-                
-
-
+                    // Use merge to update the map with the first letter as the key
+                    firstLetterMap.merge(firstLetter, new TreeSet<>(Arrays.asList(word)),
+                            (existingSet, newSet) -> {
+                                existingSet.addAll(newSet);
+                                return existingSet;
+                            });
+                }
             }
 
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
+            for (Map.Entry<Character, Set<String>> entry : firstLetterMap.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+            
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
