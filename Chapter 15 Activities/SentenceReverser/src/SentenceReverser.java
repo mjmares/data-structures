@@ -3,7 +3,7 @@ import java.util.Stack;
 
 /**
  * Class for reversing the order of a sentence.
- */
+*/
 public class SentenceReverser
 {
     /**
@@ -11,32 +11,32 @@ public class SentenceReverser
      *
      * @param sentence Sentence to be reversed.
      * @return reversed sentence.
-     */
+    */
     public static String reverse(String sentence)
     {
         Scanner scanner = new Scanner(sentence);
-        Stack<String> stack = new Stack<>();
+       
+        // Complete this method. Use a Stack.
+        Stack<String> words = new Stack<>();
+        String data = "";
 
-        // Split the sentence into words and push them onto the stack
-        String strObj = "";
-        while (scanner.hasNext()) {
-            String tempStr = scanner.next();
-            strObj += tempStr + " ";
-            if(tempStr.contains(".")) {
-                stack.push(strObj);
-                strObj = "";
+        while(scanner.hasNext()) {
+            String word = scanner.next().toLowerCase();
+            words.push(word);
+            if(word.contains(".")) {
+                String firstWord = words.pop();
+                data += firstWord.substring(0, 1).toUpperCase()
+                        + firstWord.substring(1, firstWord.length() - 1) + " ";
+                while(words.size() > 0) {
+                    data += words.pop();
+                    if(words.size() > 0)
+                        data += " ";
+                }
+                data += ". ";
             }
-            // stack.push(scanner.next());
         }
+
         scanner.close();
-
-        while (!stack.isEmpty()) {
-            String currentString = stack.pop();
-
-            // System.out.println(currentString);
-
-        }
-
-        return "";
+        return data;
     }
 }
