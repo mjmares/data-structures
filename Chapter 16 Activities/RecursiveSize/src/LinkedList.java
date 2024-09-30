@@ -26,9 +26,18 @@ public class LinkedList
     */
     public int size()
     {
-        . . .
+        return helperSize(first);
     }
 
+    public int helperSize(Node currentNode) {
+        
+        try {
+            Node nextNode = currentNode.next;
+            return 1 + helperSize(nextNode);
+        } catch(Exception e) {
+            return 0;
+        }
+    }
 
     /**
         Returns the first element in the linked list.

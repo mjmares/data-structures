@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        "Size/src",
+        "RecursiveSize/src",
+        "RecursiveSize",
+        "Contains/src"
+    ]
+}
