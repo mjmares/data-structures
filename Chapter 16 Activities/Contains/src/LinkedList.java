@@ -41,44 +41,24 @@ public class LinkedList
     */
     public boolean contains(Object obj)
     {
-        /*
-         * Add a method boolean contains(Object obj) that checks whether our LinkedList implementation contains a given object. 
-         * Implement this method by directly traversing the links, not by using an iterator.
-         * Use the equals method to determine whether obj equals node.data for a given node.
-         */
-
         Node currentNode = first;
-        boolean found = false;
-
-        try {
-            while(currentNode != null) {
-                if(currentNode.equals(obj)) {
-                    found = true;
-                    break;
+    
+        while (currentNode != null) {
+            if (obj == null) {
+                if (currentNode.data == null) {
+                    return true;
+                }
+            } else {
+                if (obj.equals(currentNode.data)) {
+                    return true;
                 }
             }
-        } catch (Exception e) {
-            found = false;
+            currentNode = currentNode.next;
         }
-
-        return found;
-
-        // LinkedListIterator iterator = new LinkedListIterator();
-        // boolean found = false;
     
-        // while (!found && iterator.hasNext()) {
-        //     Object compareNode = iterator.next();
-            
-        //     String nodeStr = (String) compareNode;
-        //     String objStr = (String) obj;
-
-        //     if (objStr.contains(nodeStr)) {
-        //         found = true;
-        //     }
-        // }
-    
-        // return found;
+        return false;
     }
+    
     
 
     /**
