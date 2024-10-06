@@ -22,13 +22,24 @@ public class LinkedListQueue
     */
     public void lastToFirst()
     {
-        . . .
-
-
-
-
-
+        if (head == null || head.next == null)
+        {
+            return;
+        }
+        else
+        {
+            Node secondLast = head;
+            while (secondLast.next != tail)
+            {
+                secondLast = secondLast.next;
+            }
+            tail.next = head;      
+            head = tail;           
+            tail = secondLast;       
+            tail.next = null;      
+        }
     }
+    
 
     /**
         Checks whether this queue is empty.
