@@ -65,4 +65,37 @@ public class Tree
     }
 
     // Additional methods will be added in later sections.
+
+    public void depthFirst(Visitor v) {
+        Tree.depthFirst(root, v);
+    }
+
+    public static void depthFirst(Node n, Visitor v) {
+        if(n == null) {
+            return;
+        }
+
+        v.visit(n.data);
+
+        for(Node child : n.children) {
+            Tree.depthFirst(child, v);
+        }
+    }
+
+    public void postOrder(Visitor v) {
+        Tree.postOrder(root, v);
+    }
+
+    public static void postOrder(Node n, Visitor v) {
+        if(n == null) {
+            return;
+        }
+
+        v.visit(n.data);
+
+        for(Node child : n.children) {
+            Tree.postOrder(child, v);
+        }
+    }
+
 }
